@@ -39,6 +39,7 @@ minecraft {
                     source project(":common").sourceSets.main
                 }
             }
+            args("--width", "1920", "--height", "1080")
         }
 
         server {

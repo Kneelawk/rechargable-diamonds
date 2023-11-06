@@ -29,6 +29,7 @@ loom {
             setConfigName("Fabric Client")
             ideConfigGenerated(true)
             runDir("run")
+            programArgs("--width", "1920", "--height", "1080")
         }
         server {
             server()
