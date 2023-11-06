@@ -1,7 +1,7 @@
-package com.example.examplemod.platform;
+package com.kneelawk.rechargeablediamonds.platform;
 
-import com.example.examplemod.Constants;
-import com.example.examplemod.platform.services.IPlatformHelper;
+import com.kneelawk.rechargeablediamonds.Constants;
+import com.kneelawk.rechargeablediamonds.platform.services.IPlatformHelper;
 
 import java.util.ServiceLoader;
 

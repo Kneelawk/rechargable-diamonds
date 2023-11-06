@@ -1,8 +1,8 @@
-package com.example.examplemod;
+package com.kneelawk.rechargeablediamonds;
 
 import net.fabricmc.api.ModInitializer;
 
-public class ExampleMod implements ModInitializer {
+public class RechargeableDiamondsMod implements ModInitializer {
     
     @Override
     public void onInitialize() {
