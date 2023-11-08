@@ -14,6 +14,15 @@ dependencies {
     modImplementation "net.fabricmc.fabric-api:fabric-api:${fabric_version}"
     implementation group: 'com.google.code.findbugs', name: 'jsr305', version: '3.0.1'
     implementation project(":common")
+
+    // Cardinal Components
+    include modImplementation("dev.onyxstudios.cardinal-components-api:cardinal-components-base:${cardinal_components_version}")
+    include modImplementation("dev.onyxstudios.cardinal-components-api:cardinal-components-item:${cardinal_components_version}")
+
+    // TechReborn Energy
+    include modApi("teamreborn:energy:${tr_energy_version}") {
+        transitive = false
+    }
 }
 
 loom {

@@ -17,38 +17,33 @@ import org.jetbrains.annotations.Nullable;
 
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.IntTag;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 
 @Mod.EventBusSubscriber
 public class DiamondCapabilities {
+    private static final ResourceLocation CAPABILITY_ID = Constants.id("diamond_energy_capability");
+    private static final String CAPABILITY_KEY = CAPABILITY_ID.toString();
+
     @SubscribeEvent
     public static void onAttatchingCapabilities(final AttachCapabilitiesEvent<ItemStack> event) {
-        if (event.getObject().getItem() != Items.DIAMOND) return;
+        ItemStack stack = event.getObject();
+        if (stack.getItem() != Items.DIAMOND) return;
 
-        EnergyStorage storage = new EnergyStorage(Constants.DIAMOND_CAPACITY);
+        StackEnergyStorage storage = new StackEnergyStorage(stack, CAPABILITY_KEY, Constants.DIAMOND_CAPACITY, Constants.MAX_INSERT, Constants.MAX_EXTRACT);
         LazyOptional<IEnergyStorage> optionalStorage = LazyOptional.of(() -> storage);
         Capability<IEnergyStorage> capability = ForgeCapabilities.ENERGY;
 
-        ICapabilityProvider provider = new ICapabilitySerializable<IntTag>() {
+        ICapabilityProvider provider = new ICapabilityProvider() {
             @Override
             public @NotNull <T> LazyOptional<T> getCapability(@NotNull Capability<T> cap, @Nullable Direction side) {
                 if (cap == capability) return optionalStorage.cast();
                 return LazyOptional.empty();
             }
-
-            @Override
-            public IntTag serializeNBT() {
-                return (IntTag) storage.serializeNBT();
-            }
-
-            @Override
-            public void deserializeNBT(IntTag nbt) {
-                storage.deserializeNBT(nbt);
-            }
         };
 
-        event.addCapability(Constants.id("diamond_energy_capability"), provider);
+        event.addCapability(CAPABILITY_ID, provider);
     }
 
     @SubscribeEvent

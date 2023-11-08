@@ -14,6 +14,8 @@ public class Constants {
     public static final Logger LOG = LoggerFactory.getLogger(MOD_NAME);
 
     public static final int DIAMOND_CAPACITY = 1000000;
+    public static final int MAX_INSERT = 10000;
+    public static final int MAX_EXTRACT = 10000;
 
     public static ResourceLocation id(String path) {
         return new ResourceLocation(MOD_ID, path);

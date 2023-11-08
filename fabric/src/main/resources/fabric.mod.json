@@ -17,6 +17,9 @@
     "entrypoints": {
         "main": [
             "com.kneelawk.rechargeablediamonds.RechargeableDiamondsMod"
+        ],
+        "cardinal-components-item": [
+            "com.kneelawk.rechargeablediamonds.DiamondComponentInitializer"
         ]
     },
     "mixins": [
@@ -30,6 +33,11 @@
         "java": ">=17"
     },
     "suggests": {
-        "another-mod": "*"
+        "flamingo": "*"
+    },
+    "custom": {
+        "cardinal-components": [
+            "rechargeable_diamonds:diamond_energy_component"
+        ]
     }
 }
