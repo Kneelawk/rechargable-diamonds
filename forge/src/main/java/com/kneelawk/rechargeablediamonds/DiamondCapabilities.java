@@ -29,8 +29,8 @@ public class DiamondCapabilities {
         if (stack.getItem() != Items.DIAMOND) return;
 
         StackEnergyStorage storage =
-            new StackEnergyStorage(stack, CAPABILITY_KEY, Constants.DIAMOND_CAPACITY, Constants.MAX_INSERT,
-                Constants.MAX_EXTRACT);
+            new StackEnergyStorage(stack, CAPABILITY_KEY, Constants.FORGE_DIAMOND_CAPACITY, Constants.FORGE_MAX_INSERT,
+                Constants.FORGE_MAX_EXTRACT);
         LazyOptional<IEnergyStorage> optionalStorage = LazyOptional.of(() -> storage);
         Capability<IEnergyStorage> capability = ForgeCapabilities.ENERGY;
 

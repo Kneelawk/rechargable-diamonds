@@ -21,6 +21,7 @@ public class RechargeableDiamondsMod implements ModInitializer {
 
         // Register TechReborn energy item
         EnergyStorage.ITEM.registerForItems(
-            (stack, ctx) -> DiamondComponentInitializer.DIAMOND_ENERGY_KEY.get(stack).getStorage(), Items.DIAMOND);
+            (stack, ctx) -> DiamondComponentInitializer.DIAMOND_ENERGY_KEY.get(stack).withContext(ctx).getStorage(),
+            Items.DIAMOND);
     }
 }

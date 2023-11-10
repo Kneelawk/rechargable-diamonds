@@ -18,6 +18,9 @@
         "main": [
             "com.kneelawk.rechargeablediamonds.RechargeableDiamondsMod"
         ],
+        "client": [
+            "com.kneelawk.rechargeablediamonds.client.RechargeableDiamondsClientMod"
+        ],
         "cardinal-components-item": [
             "com.kneelawk.rechargeablediamonds.DiamondComponentInitializer"
         ]

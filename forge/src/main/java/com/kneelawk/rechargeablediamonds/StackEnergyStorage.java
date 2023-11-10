@@ -44,7 +44,7 @@ public class StackEnergyStorage extends EnergyStorage {
     private void applyTagEnergy() {
         CompoundTag tag = stack.getTagElement(key);
         if (tag != null && tag.contains(ENERGY_KEY, Tag.TAG_INT)) {
-            energy = Mth.clamp(tag.getInt(ENERGY_KEY), 0, capacity);
+            energy = Mth.clamp(tag.getInt(ENERGY_KEY) / Constants.FORGE_ENERGY_FACTOR, 0, capacity);
         }
     }
 
@@ -52,7 +52,7 @@ public class StackEnergyStorage extends EnergyStorage {
         if (energy == 0) {
             stack.removeTagKey(key);
         } else {
-            stack.getOrCreateTagElement(key).putInt(ENERGY_KEY, energy);
+            stack.getOrCreateTagElement(key).putInt(ENERGY_KEY, energy * Constants.FORGE_ENERGY_FACTOR);
         }
     }
 
