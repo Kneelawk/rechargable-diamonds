@@ -4,6 +4,7 @@ import net.minecraftforge.energy.EnergyStorage;
 
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.Tag;
+import net.minecraft.util.Mth;
 import net.minecraft.world.item.ItemStack;
 
 public class StackEnergyStorage extends EnergyStorage {
@@ -43,7 +44,7 @@ public class StackEnergyStorage extends EnergyStorage {
     private void applyTagEnergy() {
         CompoundTag tag = stack.getTagElement(key);
         if (tag != null && tag.contains(ENERGY_KEY, Tag.TAG_INT)) {
-            energy = tag.getInt(ENERGY_KEY);
+            energy = Mth.clamp(tag.getInt(ENERGY_KEY), 0, capacity);
         }
     }
 
@@ -57,15 +58,46 @@ public class StackEnergyStorage extends EnergyStorage {
 
     @Override
     public int receiveEnergy(int maxReceive, boolean simulate) {
-        int res = super.receiveEnergy(maxReceive, simulate);
-        writeEnergy();
-        return res;
+        if (!canReceive()) return 0;
+
+        int count = stack.getCount();
+        int maxReceivePerCount = maxReceive / count;
+        int currentEnergyPerCount = getEnergyStored() / count;
+        int receivedPerCount =
+            Math.min(this.maxReceive, Math.min(maxReceivePerCount, capacity - currentEnergyPerCount));
+
+        if (!simulate && receivedPerCount > 0) {
+            energy = currentEnergyPerCount + receivedPerCount;
+            writeEnergy();
+        }
+
+        return receivedPerCount * count;
     }
 
     @Override
     public int extractEnergy(int maxExtract, boolean simulate) {
-        int res = super.extractEnergy(maxExtract, simulate);
-        writeEnergy();
-        return res;
+        if (!canExtract()) return 0;
+
+        int count = stack.getCount();
+        int maxExtractPerCount = maxExtract / count;
+        int currentEnergyPerCount = getEnergyStored() / count;
+        int extractedPerCount = Math.min(this.maxExtract, Math.min(maxExtractPerCount, currentEnergyPerCount));
+
+        if (!simulate && extractedPerCount > 0) {
+            energy = currentEnergyPerCount - extractedPerCount;
+            writeEnergy();
+        }
+
+        return extractedPerCount * count;
+    }
+
+    @Override
+    public int getEnergyStored() {
+        return energy * stack.getCount();
+    }
+
+    @Override
+    public int getMaxEnergyStored() {
+        return capacity * stack.getCount();
     }
 }

@@ -1,3 +1,17 @@
 {
-  "tooltip.rechargeable_diamonds.diamond_energy": "Diamond Energy: %s FE"
+  "tooltip.rechargeable_diamonds.diamond_energy": "Diamond Energy: %s/%s %s",
+
+  "tooltip.rechargeable_diamonds.units.forge": "FE",
+  "tooltip.rechargeable_diamonds.units.fabric": "E",
+
+  "tooltip.rechargeable_diamonds.metric.format.0": "%.2f",
+  "tooltip.rechargeable_diamonds.metric.format.1": "%.1f",
+  "tooltip.rechargeable_diamonds.metric.format.2": "%.0f",
+  "tooltip.rechargeable_diamonds.metric.format.3": "%.2f k",
+  "tooltip.rechargeable_diamonds.metric.format.4": "%.1f k",
+  "tooltip.rechargeable_diamonds.metric.format.5": "%.0f k",
+  "tooltip.rechargeable_diamonds.metric.format.6": "%.2f M",
+  "tooltip.rechargeable_diamonds.metric.format.7": "%.1f M",
+  "tooltip.rechargeable_diamonds.metric.format.8": "%.0f M",
+  "tooltip.rechargeable_diamonds.metric.format.9": "%.2f G"
 }

@@ -10,6 +10,13 @@ public interface IPlatformHelper {
     String getPlatformName();
 
     /**
+     * Gets the translatable text key suffix for units on this platform.
+     *
+     * @return the suffix for units on this platform.
+     */
+    String getUnitsTranslatableSuffix();
+
+    /**
      * Checks if a mod with the given id is loaded.
      *
      * @param modId The mod to check if it is loaded.

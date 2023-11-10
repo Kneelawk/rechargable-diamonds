@@ -13,6 +13,11 @@ public class ForgePlatformHelper implements IPlatformHelper {
     }
 
     @Override
+    public String getUnitsTranslatableSuffix() {
+        return "forge";
+    }
+
+    @Override
     public boolean isModLoaded(String modId) {
 
         return ModList.get().isLoaded(modId);

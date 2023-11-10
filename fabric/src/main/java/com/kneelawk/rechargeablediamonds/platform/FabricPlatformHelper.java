@@ -11,6 +11,11 @@ public class FabricPlatformHelper implements IPlatformHelper {
     }
 
     @Override
+    public String getUnitsTranslatableSuffix() {
+        return "fabric";
+    }
+
+    @Override
     public boolean isModLoaded(String modId) {
 
         return FabricLoader.getInstance().isModLoaded(modId);

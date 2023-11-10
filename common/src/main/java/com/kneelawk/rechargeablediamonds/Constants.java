@@ -13,7 +13,7 @@ public class Constants {
     public static final String MOD_NAME = "RechargeableDiamonds";
     public static final Logger LOG = LoggerFactory.getLogger(MOD_NAME);
 
-    public static final int DIAMOND_CAPACITY = 1000000;
+    public static final int DIAMOND_CAPACITY = 100000;
     public static final int MAX_INSERT = 10000;
     public static final int MAX_EXTRACT = 10000;
 
